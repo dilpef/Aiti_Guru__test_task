@@ -1,0 +1,31 @@
+.logoIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #efefef;
+    background: linear-gradient(180deg, rgba(239, 239, 239, 1) 0, rgba(255, 255, 255, 1) 50%);
+    width: 52px;
+    height: 52px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 40px;
+    box-shadow: 0 12px 8px rgba(0, 0, 0, 0.03);
+}
+.logoIcon::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    border-radius: 28px; /* border-radius - border толщину */
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(35, 35, 35, 0.03) 35%, #fff); /* твой градиент */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    pointer-events: none; /* чтобы не мешал клику */
+}

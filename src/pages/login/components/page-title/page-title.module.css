@@ -1,0 +1,33 @@
+.visually_hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.description {
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: 0.9px;
+    text-align: center;
+    color: #e0e0e0;
+    font-weight: 500;
+    position: relative;
+}
+.description {
+    margin-top: 12px;
+}
+.description::after {
+    content: 'Пожалуйста, авторизируйтесь';
+    color: rgba(0, 0, 0, 0.12);
+    position: absolute;
+    text-shadow: 0 4px 4px #fff;
+    top: 0;
+    left: 0;
+}
