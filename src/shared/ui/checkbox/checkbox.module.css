@@ -1,0 +1,36 @@
+.checkboxWrapper .checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.customCheckbox {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #b2b3b9;
+    border-radius: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+
+.checkboxWrapper:hover .customCheckbox {
+    background-color: #3c538e;
+    cursor: pointer;
+}
+.checkbox:checked + .customCheckbox {
+    background-color: #3c538e;
+    border-color: #b2b3b9;
+}
+
+.checkbox:checked + .customCheckbox::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -19px;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 72px;
+    background-color: #3c538e;
+}

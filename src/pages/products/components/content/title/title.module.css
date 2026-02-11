@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 42px;
+}
+.btn_wrapp {
+    width: 200px;
+    display: flex;
+    gap: 8px;
+}
+.btn_refetch {
+    background-color: transparent;
+    border: 1px solid #ececeb;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+}
+
+.btn_add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    border-radius: 6px;
+    background-color: #242edb;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    width: 147px;
+    height: 42px;
+}
+.title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    color: #333;
+}

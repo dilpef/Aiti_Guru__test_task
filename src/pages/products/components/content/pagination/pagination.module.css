@@ -1,0 +1,52 @@
+.main {
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pagination_text,
+.pagination_position {
+    font-family: 'Roboto', sans-serif;
+    color: #969b9f;
+    font-weight: 400;
+    font-size: 18px;
+    color: #969b9f;
+}
+.pagination_position {
+    color: #333;
+}
+
+.pagination_info {
+    display: flex;
+    gap: 7px;
+}
+.pagination {
+    font-family: 'Cairo', sans-serif;
+    display: flex;
+    gap: 8px;
+}
+.pagination_item {
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    color: #fff;
+    align-items: center;
+    background-color: #797fea;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn {
+    background-color: transparent;
+}

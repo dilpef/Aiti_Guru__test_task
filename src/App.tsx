@@ -1,10 +1,10 @@
-import styles from './App.module.css';
-import { LoginPage } from './pages/login/LoginPage';
+import styles from './app.module.css';
+import { ProductsPage } from './pages/products/products-page';
 
 function App() {
     return (
         <div className={styles.container}>
-            <LoginPage />
+            <ProductsPage />
         </div>
     );
 }

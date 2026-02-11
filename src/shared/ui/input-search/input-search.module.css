@@ -1,0 +1,27 @@
+.container {
+    position: relative;
+}
+
+.icon {
+    background-color: transparent;
+    position: absolute;
+    z-index: 1;
+    top: 12px;
+    left: 20px;
+}
+
+.input {
+    width: 1023px;
+    height: 48px;
+    background-color: #f3f3f3;
+    border-radius: 8px;
+    padding-left: 52px;
+}
+
+.input::placeholder {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 171%;
+    color: #999;
+}

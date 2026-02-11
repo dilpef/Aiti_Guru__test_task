@@ -6,5 +6,5 @@ type AuthLayoutProps = {
 };
 
 export const AuthLayout: FC<AuthLayoutProps> = ({ children }) => {
-    return <div className={styles.container}>{children}</div>;
+    return <main className={styles.container}>{children}</main>;
 };
