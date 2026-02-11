@@ -5,11 +5,18 @@
     height: 42px;
 }
 .btn_wrapp {
-    width: 200px;
+    width: 250px;
     display: flex;
     gap: 8px;
 }
 .btn_refetch {
+    background-color: transparent;
+    border: 1px solid #ececeb;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+}
+.btn_sort {
     background-color: transparent;
     border: 1px solid #ececeb;
     width: 42px;

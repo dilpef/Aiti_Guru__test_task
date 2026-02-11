@@ -1,8 +1,26 @@
+import type { FC } from 'react';
 import { Product } from '../../../../../entites/product/product';
+import {
+    selectIsLoadingProducts,
+    selectProducts,
+} from '../../../../../entites/product/store/selectors';
+import { useAppSelector } from '../../../../../shared/store/hooks';
 import { Checkbox } from '../../../../../shared/ui/checkbox/checkbox';
 import styles from './table.module.css';
 
-export const Table = () => {
+type Props = {
+    currentPage: number;
+    ITEMS_PER_PAGE: number;
+};
+export const Table: FC<Props> = ({ currentPage, ITEMS_PER_PAGE }) => {
+    const data = useAppSelector(selectProducts);
+    const isLoading = useAppSelector(selectIsLoadingProducts);
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+
+    if (!data.length) return <span>Товары не найдены</span>;
+    if (isLoading) return <span>Загрузка...</span>;
+
+    const currentItems = data.slice(startIndex, startIndex + ITEMS_PER_PAGE);
     return (
         <table>
             <thead>
@@ -22,11 +40,17 @@ export const Table = () => {
                 </tr>
             </thead>
             <tbody>
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
+                {currentItems.map(({ id, title, brand, category, price, sku, rating }) => (
+                    <Product
+                        id={id}
+                        title={title}
+                        brand={brand}
+                        category={category}
+                        price={price}
+                        sku={sku}
+                        rating={rating}
+                    />
+                ))}
             </tbody>
         </table>
     );
