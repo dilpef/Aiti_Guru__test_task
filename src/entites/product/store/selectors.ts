@@ -12,7 +12,7 @@ export const selectQuantityElements = createSelector(
 
 export const selectIsLoadingProducts = createSelector(
     (state: TypeState) => state.products,
-    (statsState) => statsState.isLoading,
+    (statsState) => statsState.status,
 );
 export const selectSort = createSelector(
     (state: TypeState) => state.products,

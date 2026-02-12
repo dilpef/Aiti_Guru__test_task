@@ -18,7 +18,7 @@ export const Table: FC<Props> = ({ currentPage, ITEMS_PER_PAGE }) => {
     const isLoading = useAppSelector(selectIsLoadingProducts);
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
 
-    if (isLoading) return <Loader />;
+    if (isLoading === 'loading') return <Loader />;
     if (!data.length) return <span>Товары не найдены</span>;
 
     const currentItems = data.slice(startIndex, startIndex + ITEMS_PER_PAGE);
