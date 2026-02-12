@@ -10,7 +10,7 @@ export const Content = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const quantity = useAppSelector(selectQuantityElements);
     const ITEMS_PER_PAGE = 5;
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE + 1; // первый элемент страницы
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE + 1;
     const endIndex = Math.min(currentPage * ITEMS_PER_PAGE, quantity);
     return (
         <ContentLayout>

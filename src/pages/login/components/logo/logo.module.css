@@ -19,13 +19,13 @@
     bottom: 0px;
     left: 0px;
     right: 0px;
-    border-radius: 28px; /* border-radius - border толщину */
+    border-radius: 28px;
     padding: 1px;
-    background: linear-gradient(180deg, rgba(35, 35, 35, 0.03) 35%, #fff); /* твой градиент */
+    background: linear-gradient(180deg, rgba(35, 35, 35, 0.03) 35%, #fff);
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
-    pointer-events: none; /* чтобы не мешал клику */
+    pointer-events: none;
 }

@@ -1,6 +1,6 @@
 import { Checkbox } from '../../shared/ui/checkbox/checkbox';
 import styles from './product.module.css';
-import type { Products } from '../../shared/types/product';
+import type { Products } from '../../shared/types/entities';
 import type { FC } from 'react';
 
 export const Product: FC<Products> = ({ id, title, brand, category, price, sku, rating }) => {

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import type { Products } from '../../../../shared/types/product';
+import type { Products } from '../../../../shared/types/entities';
 import { errorHandling } from '../../../../shared/lib/error-handling';
 
 export const fetchProducts = createAsyncThunk<Products[], void, { rejectValue: string }>(

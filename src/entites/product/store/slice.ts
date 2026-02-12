@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { fetchProducts } from './thunks/fetch-products';
-import type { ProductsState } from '../../../shared/types/product';
+import type { ProductsState } from '../../../shared/types/entities';
 import { searchProducts } from './thunks/search-products';
 
 const initialState: ProductsState = {
