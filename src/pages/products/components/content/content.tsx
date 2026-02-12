@@ -6,7 +6,7 @@ import { Title } from './title/title';
 import { selectQuantityElements } from '../../../../entites/product/store/selectors';
 import { useAppSelector } from '../../../../shared/store/hooks';
 
-export const Content = () => {
+const Content = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const quantity = useAppSelector(selectQuantityElements);
     const ITEMS_PER_PAGE = 5;
@@ -26,3 +26,5 @@ export const Content = () => {
         </ContentLayout>
     );
 };
+
+export default Content;

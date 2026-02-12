@@ -3,10 +3,13 @@ import { useAppDispatch } from '../../../../shared/store/hooks';
 import { InputSearch } from '../../../../shared/ui/input-search/input-search';
 import styles from './header.module.css';
 import { searchProducts } from '../../../../entites/product/store/thunks/search-products';
+import { logout } from '../../../../entites/user/store/slice';
+import { useNavigate } from 'react-router-dom';
 
-export const Header = () => {
+const Header = () => {
     const [value, setValue] = useState('');
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -19,6 +22,10 @@ export const Header = () => {
     const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
+    const handlerLogout = () => {
+        dispatch(logout());
+        navigate('/');
+    };
 
     return (
         <div className={styles.container}>
@@ -27,8 +34,17 @@ export const Header = () => {
                 placeholder="Найти"
                 value={value}
                 onChange={handleSearch}
-                Icon={<img src="./icon_search.svg" />}
+                Icon={<img src="./icon_search.svg" alt="Иконка поиска" />}
             />
+            <button
+                className={styles.btn_logout}
+                type="button"
+                onClick={handlerLogout}
+                aria-label="Выйти"
+            >
+                <img src="./logout_icon.svg" className={styles.logout} alt="Выйти из аккаунта" />
+            </button>
         </div>
     );
 };
+export default Header;

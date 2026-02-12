@@ -5,5 +5,5 @@ type ContentLayoutProps = {
     children: ReactNode;
 };
 export const ContentLayout: FC<ContentLayoutProps> = ({ children }) => {
-    return <main className={styles.container}>{children}</main>;
+    return <section className={styles.container}>{children}</section>;
 };

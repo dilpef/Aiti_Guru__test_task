@@ -7,5 +7,5 @@ export const errorHandling = ({ error }: ErrorProps) => {
         return error.message;
     }
 
-    return 'An unknown error occurred';
+    return 'Неизвестная ошибка';
 };

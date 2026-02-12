@@ -3,11 +3,19 @@ import styles from './product.module.css';
 import type { Products } from '../../shared/types/entities';
 import type { FC } from 'react';
 
-export const Product: FC<Products> = ({ id, title, brand, category, price, sku, rating }) => {
+export const Product: FC<Omit<Products, 'id'> & { key: number }> = ({
+    key,
+    title,
+    brand,
+    category,
+    price,
+    sku,
+    rating,
+}) => {
     return (
-        <tr className={styles.product} key={id}>
+        <tr className={styles.product} key={key}>
             <td className={styles.product_row__info}>
-                <Checkbox />
+                <Checkbox aria-label="Выбрать товар" id="select-product" />
                 <div className={styles.product_row__image} />
 
                 <div className={styles.product_row__text}>
@@ -39,10 +47,10 @@ export const Product: FC<Products> = ({ id, title, brand, category, price, sku, 
             <td>
                 <div className={styles.actions}>
                     <button className={styles.actions__add}>
-                        <img src="./plus_product_icon.svg" />
+                        <img src="./plus_product_icon.svg" alt="Добавить товар" />
                     </button>
                     <button className={styles.actions__more}>
-                        <img src="./more_icon.svg" />
+                        <img src="./more_icon.svg" alt="Дополнительные действия" />
                     </button>
                 </div>
             </td>

@@ -4,7 +4,7 @@ import { Header } from './components/header/header';
 import { Logo } from './components/logo/logo';
 import { PageTitle } from './components/page-title/page-title';
 
-export const LoginPage = () => {
+const LoginPage = () => {
     return (
         <AuthLayout>
             <Header>
@@ -15,3 +15,4 @@ export const LoginPage = () => {
         </AuthLayout>
     );
 };
+export default LoginPage;

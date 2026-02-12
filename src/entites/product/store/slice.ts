@@ -1,11 +1,12 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { fetchProducts } from './thunks/fetch-products';
-import type { ProductsState } from '../../../shared/types/entities';
+import type { Products, ProductsState } from '../../../shared/types/entities';
 import { searchProducts } from './thunks/search-products';
+import { createMatcher } from '../../../shared/lib/add-matcher';
 
 const initialState: ProductsState = {
     items: [],
-    isLoading: false,
+    status: 'idle',
     error: null,
     sort: 'asc',
 };
@@ -22,37 +23,41 @@ const productSlice = createSlice({
                 return (a.rating - b.rating) * multiplier;
             });
         },
+        addProduct: (state, action: PayloadAction<Products>) => {
+            state.items = [...state.items, action.payload];
+        },
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchProducts.pending, (state) => {
-                state.isLoading = true;
+                state.status = 'loading';
                 state.error = null;
             })
             .addCase(fetchProducts.fulfilled, (state, action) => {
-                state.isLoading = false;
+                state.status = 'succeeded';
 
                 const multiplier = state.sort === 'asc' ? 1 : -1;
                 state.items = [...action.payload].sort(
                     (a, b) => (a.rating - b.rating) * multiplier,
                 );
             })
-            .addCase(fetchProducts.rejected, (state, action) => {
-                state.isLoading = false;
-                state.error = action.payload as string;
-            })
+
             .addCase(searchProducts.pending, (state) => {
-                state.isLoading = true;
+                state.status = 'loading';
             })
             .addCase(searchProducts.fulfilled, (state, action) => {
-                state.isLoading = false;
+                state.status = 'succeeded';
 
                 const multiplier = state.sort === 'asc' ? 1 : -1;
                 state.items = [...action.payload].sort(
                     (a, b) => (a.rating - b.rating) * multiplier,
                 );
+            })
+            .addMatcher(createMatcher('products/'), (state, action) => {
+                state.status = 'failed';
+                state.error = action.payload;
             });
     },
 });
-export const { sortByRating } = productSlice.actions;
+export const { sortByRating, addProduct } = productSlice.actions;
 export const productReducer = productSlice.reducer;

@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import styles from './app.module.css';
-// import { ProductsPage } from './pages/products/products-page';
+
 import { useAppDispatch } from './shared/store/hooks';
 import { fetchProducts } from './entites/product/store/thunks/fetch-products';
-import { LoginPage } from './pages/login/login-page';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routers/route-config';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -14,8 +15,7 @@ function App() {
 
     return (
         <div className={styles.container}>
-            {/* <ProductsPage /> */}
-            <LoginPage />
+            <RouterProvider router={router} />
         </div>
     );
 }

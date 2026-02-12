@@ -4,6 +4,7 @@ import { useState, type FC } from 'react';
 import styles from './foms.module.css';
 import { useAppDispatch } from '../../../../shared/store/hooks';
 import { userAuthorization } from '../../../../entites/user/store/thunks/auth';
+import { useNavigate } from 'react-router-dom';
 
 type LoginFormInputs = {
     email: string;
@@ -12,7 +13,9 @@ type LoginFormInputs = {
 };
 export const Form: FC = () => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
+    const [authError, setAuthError] = useState('');
     const {
         register,
         handleSubmit,
@@ -33,11 +36,19 @@ export const Form: FC = () => {
                 password: data.password,
                 rememberMe: data.rememberMe,
             }),
-        );
+        )
+            .unwrap()
+            .then(() => {
+                navigate('/products');
+            })
+            .catch((error) => {
+                setAuthError(error);
+            });
     };
 
     return (
         <form className={styles.auth_form} onSubmit={handleSubmit(onSubmit)}>
+            {authError && <span className={styles.error_message}>{authError}</span>}
             <div className={styles.auth_form_fields}>
                 <Input
                     label
@@ -57,7 +68,9 @@ export const Form: FC = () => {
                         </button>
                     }
                 />
-                {errors.email && <span className={styles.error}>{errors.email.message}</span>}
+                {errors.email && (
+                    <span className={styles.error_message}>{errors.email.message}</span>
+                )}
 
                 <Input
                     label
@@ -76,7 +89,9 @@ export const Form: FC = () => {
                         </button>
                     }
                 />
-                {errors.password && <span className={styles.error}>{errors.password.message}</span>}
+                {errors.password && (
+                    <span className={styles.error_message}>{errors.password.message}</span>
+                )}
             </div>
 
             <label className={styles.checkboxWrapper}>

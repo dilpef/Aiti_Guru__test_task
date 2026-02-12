@@ -7,6 +7,7 @@ import {
 import { useAppSelector } from '../../../../../shared/store/hooks';
 import { Checkbox } from '../../../../../shared/ui/checkbox/checkbox';
 import styles from './table.module.css';
+import { Loader } from '../../../../../shared/ui/loader/loader';
 
 type Props = {
     currentPage: number;
@@ -17,8 +18,8 @@ export const Table: FC<Props> = ({ currentPage, ITEMS_PER_PAGE }) => {
     const isLoading = useAppSelector(selectIsLoadingProducts);
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
 
+    if (isLoading) return <Loader />;
     if (!data.length) return <span>Товары не найдены</span>;
-    if (isLoading) return <span>Загрузка...</span>;
 
     const currentItems = data.slice(startIndex, startIndex + ITEMS_PER_PAGE);
     return (
@@ -27,7 +28,7 @@ export const Table: FC<Props> = ({ currentPage, ITEMS_PER_PAGE }) => {
                 <tr>
                     <th className={styles.table__header_name}>
                         <div>
-                            <Checkbox />
+                            <Checkbox aria-label="Выбрать все товары" id="select-all" />
                             <span className={styles.table__header_title}>Наименование</span>
                         </div>
                     </th>
@@ -42,7 +43,7 @@ export const Table: FC<Props> = ({ currentPage, ITEMS_PER_PAGE }) => {
             <tbody>
                 {currentItems.map(({ id, title, brand, category, price, sku, rating }) => (
                     <Product
-                        id={id}
+                        key={id}
                         title={title}
                         brand={brand}
                         category={category}

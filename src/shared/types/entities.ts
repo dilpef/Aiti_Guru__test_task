@@ -10,7 +10,7 @@ export type Products = {
 
 export type ProductsState = {
     items: Products[] | [];
-    isLoading: boolean;
+    status: 'idle' | 'loading' | 'succeeded' | 'failed';
     error: null | string;
     sort: 'asc' | 'desc';
 };

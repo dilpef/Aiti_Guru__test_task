@@ -21,12 +21,12 @@ export const userAuthorization = createAsyncThunk<
             });
 
             if (!response.ok) {
-                return rejectWithValue('Authorization failed');
+                return rejectWithValue('Неверный логин или пароль');
             }
             const result = await response.json();
 
             if (!result.accessToken || !result.id) {
-                return rejectWithValue('Invalid server response');
+                return rejectWithValue('Ошибка авторизации');
             }
 
             return { token: result.accessToken, id: result.id, rememberMe: formData.rememberMe };

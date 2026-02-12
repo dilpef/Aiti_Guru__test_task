@@ -1,7 +1,6 @@
 .auth_form {
     height: 527px;
     width: 716px;
-
     margin-top: 32px;
     display: flex;
     flex-direction: column;
@@ -12,8 +11,12 @@
     flex-direction: column;
     box-sizing: border-box;
     gap: 16px;
-    height: 192px;
     width: 399px;
+}
+.error_message {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: red;
 }
 
 .checkboxWrapper .checkbox {
